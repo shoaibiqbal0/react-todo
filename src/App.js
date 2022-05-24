@@ -1,9 +1,12 @@
+import React from "react";
 import "./App.css";
+import { Heading } from "@chakra-ui/react";
+import { Stack, HStack, VStack } from "@chakra-ui/react";
 
 function App() {
   return (
     <div>
-      <h1>Clean React App</h1>
+      <Heading>Todo Application</Heading>
     </div>
   );
 }
