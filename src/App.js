@@ -1,13 +1,17 @@
 import React from "react";
 import "./App.css";
 import { Heading } from "@chakra-ui/react";
-import { Stack, HStack, VStack } from "@chakra-ui/react";
+import { VStack, IconButton } from "@chakra-ui/react";
+import TodoList from "./components/AddTodo";
+import AddTodo from "./components/AddTodo";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 function App() {
   return (
-    <div>
+    <VStack>
+      <IconButton aria-label="Switch Mode" icon={<FaSun />} />
       <Heading>Todo Application</Heading>
-    </div>
+    </VStack>
   );
 }
 
