@@ -23,7 +23,7 @@ function TodoList() {
       alignItems="stretch"
     >
       {todos.map((todo, index) => (
-        <HStack key={index} spacing="150px">
+        <HStack key={index}>
           <Text>{todo}</Text>
           <Spacer />
           <IconButton

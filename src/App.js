@@ -7,7 +7,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 
 function App() {
   return (
-    <VStack p={4}>
+    <VStack p="4">
       <IconButton
         aria-label="Switch Mode"
         icon={<FaSun />}
@@ -16,7 +16,7 @@ function App() {
         alignSelf="flex-end"
       />
       <Heading
-        mb="8"
+        pb="10"
         fontSize="5xl"
         fontWeight="extrabold"
         bgGradient="linear(to-l, #7928CA, #FF0080)"

@@ -4,11 +4,14 @@ import { Button } from "@chakra-ui/react";
 import React from "react";
 
 function AddTodo() {
-  function handleClick(event) {}
+  function handleClick(event) {
+    event.preventDefault();
+    console.log("Hello!");
+  }
 
   return (
     <form onSubmit={handleClick}>
-      <HStack>
+      <HStack pt="10">
         <Input variant="filled" placeholder="Add your todos.." />
         <Button colorScheme="pink" px="8" type="submit">
           Add todo
