@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Heading } from "@chakra-ui/react";
-import { VStack, IconButton } from "@chakra-ui/react";
+import { useState } from "react";
+import { VStack, IconButton, Heading } from "@chakra-ui/react";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -14,9 +13,9 @@ function App() {
     });
   }
 
-  function toDelete(id) {
+  function toDelete(toDoListIndex) {
     const newTodos = todos.filter((_, index) => {
-      return index !== id;
+      return index !== toDoListIndex;
     });
     setTodos(newTodos);
   }

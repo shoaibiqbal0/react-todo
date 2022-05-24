@@ -5,12 +5,21 @@ import {
   IconButton,
   StackDivider,
   Spacer,
+  Badge,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 
 function TodoList(props) {
   function handleClick(index) {
     props.deleteItem(index);
+  }
+
+  if (!props.todos.length) {
+    return (
+      <Badge p="5" borderRadius="lg" colorScheme="green">
+        Yay!! No more todos!
+      </Badge>
+    );
   }
 
   return (

@@ -1,19 +1,29 @@
-import { HStack } from "@chakra-ui/react";
-import { Input } from "@chakra-ui/react";
-import { Button } from "@chakra-ui/react";
+import { HStack, Input, Button, useToast } from "@chakra-ui/react";
+
 import { useState } from "react";
 
 function AddTodo(props) {
   const [todo, setTodo] = useState("");
+  const toast = useToast();
 
   function handleChange(event) {
     setTodo(event.target.value);
   }
 
   function handleClick(event) {
-    props.onAdd(todo);
     event.preventDefault();
-    setTodo("");
+    if (!todo) {
+      toast({
+        title: "No Content",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    } else {
+      props.onAdd(todo);
+
+      setTodo("");
+    }
   }
 
   return (
