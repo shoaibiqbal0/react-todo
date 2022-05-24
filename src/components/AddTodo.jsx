@@ -10,7 +10,9 @@ function AddTodo() {
     <form onSubmit={handleClick}>
       <HStack>
         <Input variant="filled" placeholder="Add your todos.." />
-        <Button colorScheme="pink">Add todo</Button>
+        <Button colorScheme="pink" px="8" type="submit">
+          Add todo
+        </Button>
       </HStack>
     </form>
   );
