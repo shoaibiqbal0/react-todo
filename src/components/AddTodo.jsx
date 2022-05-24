@@ -1,18 +1,30 @@
 import { HStack, VStack } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 
-function AddTodo() {
+function AddTodo(props) {
+  const [todo, setTodo] = useState("");
+
+  function handleChange(event) {
+    setTodo(event.target.value);
+  }
+
   function handleClick(event) {
+    props.onAdd(todo);
     event.preventDefault();
-    console.log("Hello!");
+    setTodo("");
   }
 
   return (
     <form onSubmit={handleClick}>
       <HStack pt="10">
-        <Input variant="filled" placeholder="Add your todos.." />
+        <Input
+          onChange={handleChange}
+          variant="filled"
+          placeholder="Add your todos.."
+          value={todo}
+        />
         <Button colorScheme="pink" px="8" type="submit">
           Add todo
         </Button>

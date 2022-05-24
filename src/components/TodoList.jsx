@@ -9,8 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 
-function TodoList() {
-  const todos = ["bring bread", "bring milk"];
+function TodoList(props) {
+  function handleClick(index) {
+    props.deleteItem(index);
+  }
+
   return (
     <VStack
       divider={<StackDivider />}
@@ -22,8 +25,8 @@ function TodoList() {
       maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "40vw" }}
       alignItems="stretch"
     >
-      {todos.map((todo, index) => (
-        <HStack key={index}>
+      {props.todos.map((todo, index) => (
+        <HStack key={index} id={index}>
           <Text>{todo}</Text>
           <Spacer />
           <IconButton
@@ -31,6 +34,7 @@ function TodoList() {
             icon={<FaTrash />}
             isRound={true}
             size="xs"
+            onClick={() => handleClick(index)}
           />
         </HStack>
       ))}
