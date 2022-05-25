@@ -7,13 +7,13 @@ import { FaMoon, FaSun } from "react-icons/fa";
 function App() {
   const [todos, setTodos] = useState(["Buy Milk", "Buy Bread", "Buy Eggs"]);
   const { colorMode, toggleColorMode } = useColorMode();
-
+  // Add custom todo to the Todos array
   function addTodo(todo) {
     setTodos((previousValue) => {
       return [...previousValue, todo];
     });
   }
-
+  // Delete custom todo when user presses delete button
   function toDelete(toDoListIndex) {
     const newTodos = todos.filter((_, index) => {
       return index !== toDoListIndex;

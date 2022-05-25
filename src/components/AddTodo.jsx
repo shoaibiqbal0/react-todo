@@ -1,15 +1,14 @@
 import { HStack, Input, Button, useToast } from "@chakra-ui/react";
-
 import { useState } from "react";
 
 function AddTodo(props) {
   const [todo, setTodo] = useState("");
   const toast = useToast();
-
+  // Handle the change in add todo text field
   function handleChange(event) {
     setTodo(event.target.value);
   }
-
+  // Handle the Add Todo button
   function handleClick(event) {
     event.preventDefault();
     if (!todo) {

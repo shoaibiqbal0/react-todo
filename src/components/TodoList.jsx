@@ -10,10 +10,11 @@ import {
 import { FaTrash } from "react-icons/fa";
 
 function TodoList(props) {
+  // Handle delete button press
   function handleClick(index) {
     props.deleteItem(index);
   }
-
+  // If todos array is empty then display message
   if (!props.todos.length) {
     return (
       <Badge p="5" borderRadius="lg" colorScheme="green">
@@ -21,7 +22,7 @@ function TodoList(props) {
       </Badge>
     );
   }
-
+  // Look through todos array and render todos
   return (
     <VStack
       divider={<StackDivider />}
