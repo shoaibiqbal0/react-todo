@@ -5,7 +5,7 @@ import AddTodo from "./components/AddTodo";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 function App() {
-  const [todos, setTodos] = useState(["Buy Milk", "Buy Bread", "Buy Wheat"]);
+  const [todos, setTodos] = useState(["Buy Milk", "Buy Bread", "Buy Eggs"]);
   const { colorMode, toggleColorMode } = useColorMode();
 
   function addTodo(todo) {
