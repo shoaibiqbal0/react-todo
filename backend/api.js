@@ -41,7 +41,15 @@ app.post("/", (req, res) => {
   });
 });
 
-app.delete("/", (req, res) => {});
+app.delete("/:id", (req, res) => {
+  toDoList.findByIdAndDelete(req.params.id, (err) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send("Deleted successfully.");
+    }
+  });
+});
 
 // Start server on port 5000
 app.listen(5000, () => {
