@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { VStack, IconButton, Heading, useColorMode } from "@chakra-ui/react";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 function App() {
-  const [todos, setTodos] = useState(["Buy Milk", "Buy Bread", "Buy Eggs"]);
+  const [todos, setTodos] = useState({ content: "" });
   const { colorMode, toggleColorMode } = useColorMode();
   // Add custom todo to the Todos array
   function addTodo(todo) {
@@ -20,6 +20,16 @@ function App() {
     });
     setTodos(newTodos);
   }
+
+  useEffect(() => {
+    fetch("/todos")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((jsonRes) => setTodos(jsonRes));
+  });
 
   return (
     <VStack p="4">

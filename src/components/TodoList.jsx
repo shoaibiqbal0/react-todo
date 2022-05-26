@@ -34,16 +34,16 @@ function TodoList(props) {
       maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "40vw" }}
       alignItems="stretch"
     >
-      {props.todos.map((todo, index) => (
-        <HStack key={index} id={index}>
-          <Text>{todo}</Text>
+      {props.todos.map((todo) => (
+        <HStack key={todo._id} id={todo._id}>
+          <Text>{todo.content}</Text>
           <Spacer />
           <IconButton
             aria-label="Delete Item"
             icon={<FaTrash />}
             isRound={true}
             size="xs"
-            onClick={() => handleClick(index)}
+            onClick={() => handleClick(todo._id)}
           />
         </HStack>
       ))}

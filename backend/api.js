@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const app = express();
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect to mongoose database
@@ -17,8 +18,8 @@ const toDoListSchema = new mongoose.Schema({
 // Create new model
 const toDoList = mongoose.model("toDoList", toDoListSchema);
 
-// Get the homepage
-app.get("/", (req, res) => {
+// Find everything in database
+app.get("/todos", (req, res) => {
   toDoList.find({}, (err, result) => {
     if (err) {
       res.send(err);
@@ -28,7 +29,8 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/", (req, res) => {
+// Post to database
+app.post("/todos", (req, res) => {
   const newListItem = new toDoList({
     content: req.body.content,
   });
@@ -41,6 +43,7 @@ app.post("/", (req, res) => {
   });
 });
 
+// Delete by ID from the database
 app.delete("/:id", (req, res) => {
   toDoList.findByIdAndDelete(req.params.id, (err) => {
     if (err) {
@@ -52,6 +55,6 @@ app.delete("/:id", (req, res) => {
 });
 
 // Start server on port 5000
-app.listen(5000, () => {
+app.listen(4000, () => {
   console.log("Server has started!");
 });
