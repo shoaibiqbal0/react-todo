@@ -44,7 +44,7 @@ app.post("/todos", (req, res) => {
 });
 
 // Delete by ID from the database
-app.delete("/:id", (req, res) => {
+app.delete("/todos/delete/:id", (req, res) => {
   toDoList.findByIdAndDelete(req.params.id, (err) => {
     if (err) {
       res.send(err);

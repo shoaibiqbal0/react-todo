@@ -9,25 +9,18 @@ function App() {
   const { colorMode, toggleColorMode } = useColorMode();
   // Add custom todo to the Todos array
   function addTodo(todo) {
-    setTodos((previousValue) => {
-      return [...previousValue, todo];
-    });
-  }
-  // Delete custom todo when user presses delete button
-  function toDelete(toDoListIndex) {
-    const newTodos = todos.filter((_, index) => {
-      return index !== toDoListIndex;
-    });
-    setTodos(newTodos);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: todo }),
+    };
+    fetch("/todos", requestOptions).then((response) => response);
   }
 
+  // Fetch the todo list from database
   useEffect(() => {
     fetch("/todos")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
+      .then((response) => response.json())
       .then((jsonRes) => setTodos(jsonRes));
   });
 
