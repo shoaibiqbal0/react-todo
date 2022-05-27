@@ -16,7 +16,12 @@ function App() {
     };
     fetch("/todos", requestOptions).then((response) => response);
   }
-
+  // Delete custom todo when user presses delete button
+  function toDelete(toDoListIndex) {
+    fetch("/todos/delete/" + toDoListIndex, { method: "DELETE" }).then(() =>
+      console.log("Deleted!")
+    );
+  }
   // Fetch the todo list from database
   useEffect(() => {
     fetch("/todos")
